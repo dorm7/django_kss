@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+{% load pykss %}
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <title>Styleguide Example</title>
+        <link rel="stylesheet" href="{% static "css/layout.css" %}" type="text/css" />
+        <link rel="stylesheet" href="{% static "css/buttons.css" %}" type="text/css" />
+        <link rel="stylesheet" href="{% static "css/forms.css" %}" type="text/css" />
+        <link rel="stylesheet" href="{% static "css/bootstrap-kss.min.css" %}" type="text/css" />
+
+        {% block style %} <!--extra style will be over ride--> {% endblock %}
+
+    </head>
+
+    <body>
+
+
+    <header>
+        {% block header %} Styleguide Example {% endblock %}
+    </header>
+
+
+    <div id="wrapper">
+
+        <!-- Nav tabs -->
+        <ul role="main" class='nav nav-pills nav-stacked' role="tablist" data-js-bs-tab>
+           {% for section, description in section_descriptions.items %}
+           <li>
+               <a href="#guide-{{ section }}" data-js-bs-tab-trigger-item="#guide-{{ section }}" role="tab">
+                 {{ description }}
+               </a>
+           </li>
+            {% endfor %}
+        </ul>
+
+
+        <!-- Whole Contents -->
+        <div class="tab-content">
+        {% for section in sections %}
+            <div class="tab-pane" id="guide-{{ section }}">
+                {% renderstyleguide styleguide section %}
+            </div>
+        {% endfor %}
+        </div>
+
+
+    </div>
+
+<script src="{% static "pykss/js/kss.js" %}"></script>
+<script src="{% static "js/jquery-2.1.1.min.js" %}"></script>
+<script src="{% static "js/bootstrap-kss.min.js" %}"></script>
+
+<script type="text/javascript">
+$(function() {
+    $('[data-js-bs-tab-trigger-item=' + location.hash + ']').tab('show');
+
+    $('[data-js-bs-tab] a').click(function (e) {
+      $(this).tab('show');
+    });
+});
+</script>
+
+{% block buttom %} {% endblock %}
+
+</body>
+</html>

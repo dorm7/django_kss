@@ -1,0 +1,49 @@
+{% extends "base_styleguide.html" %}
+{% load pykss %}
+
+{% block content %}
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist" data-js-bs-tab>
+
+   {% for section in sections %}
+   <a href="#guide-{{ section }}" data-js-hash="#guide-{{ section }}" role="tab">
+       Guide {{ section }}
+   </a>
+    {% endfor %}
+</ul>
+
+
+
+
+
+<div class="tab-content">
+
+{% for section in sections %}
+    <div class="tab-pane" id="guide-{{ section }}">
+
+            {% renderstyleguide styleguide section %}
+
+    </div>
+
+{% endfor %}
+
+</div>
+
+
+{% endblock %}
+
+{% block buttom %}
+
+<script type="text/javascript">
+$(function() {
+    $('[data-js-bs-tab] a').click(function (e) {
+  $(this).tab('show');
+});
+
+    $('[data-js-hash=' + location.hash + ']').tab('show');
+
+})
+</script>
+
+{% endblock %}
