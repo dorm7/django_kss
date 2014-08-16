@@ -4,7 +4,8 @@ from django.contrib import admin
 admin.autodiscover()
 import django_kss.urls
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     # Examples:
     # url(r'^$', 'django_kss_project.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
