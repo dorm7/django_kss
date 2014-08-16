@@ -1,2 +1,4 @@
 *.pyc
 VENV
+dist/
+django_kss.egg-info/

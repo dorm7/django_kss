@@ -1,0 +1,3 @@
+include README.rst
+recursive-include django_kss/static *
+recursive-include django_kss/templates *
