@@ -14,8 +14,13 @@ start
     pip install django-kss
 
 
-Quick start
-===========
+
+Project Settings
+==========================
+
+
+
+Add the two app,
 
     INSTALLED_APPS = {
         ...
@@ -24,13 +29,22 @@ Quick start
     }
 
 
-Project Settings
-==========================
-
-add setting in your project's settings with the two extra config
+Add setting in your project's settings with the two extra config
 
 * PYKSS_DIRS:  Setup source file path, less sass or css
 * PYKSS_STATIC_FILES: the full path in your assets. final page use it to show content
+
+
+Routing, add the following two lines in your project's urls.py
+
+import:
+
+    import django_kss.urls
+
+add the url patterns:
+
+    url(r'^$', include(django_kss.urls)),
+
 
 
 Use the The Preconfigured Django Server
