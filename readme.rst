@@ -11,6 +11,7 @@ Quick start
     INSTALLED_APPS = {
         ...
         "django_kss",
+
         "pykss.contrib.django",
     }
 
@@ -19,7 +20,8 @@ The Pre Configured Project
 ==========================
 
 
-
+* PYKSS_DIRS:  Setup source file path, less sass or css
+* PYKSS_STATIC_FILES: the full path in your assets. final page use it to show content
 
 
 
