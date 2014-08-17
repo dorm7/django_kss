@@ -1,6 +1,16 @@
+
+************
+introduction
+************
+
+help you launch your style guide site with KSS syntax
+
+![Screen Shot](pictures/screenshot.png)
+
 ======
 start
 ======
+
 
     pip install -r requirements.txt
 
@@ -16,9 +26,10 @@ Quick start
     }
 
 
-The Pre Configured Project
+Project Settings
 ==========================
 
+add setting in your project's settings with the two extra config
 
 * PYKSS_DIRS:  Setup source file path, less sass or css
 * PYKSS_STATIC_FILES: the full path in your assets. final page use it to show content
