@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-{% load static %}
-{% load pykss %}
 <html>
     <head>
+    {% load static %}
+    {% load pykss %}
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
         <title>Styleguide Example</title>
         <link rel="stylesheet" href="{% static "css/layout.css" %}" type="text/css" />
-        <link rel="stylesheet" href="{% static "css/buttons.css" %}" type="text/css" />
-        <link rel="stylesheet" href="{% static "css/forms.css" %}" type="text/css" />
         <link rel="stylesheet" href="{% static "css/bootstrap-kss.min.css" %}" type="text/css" />
+
+        {% for user_css_file in PYKSS_STATIC_FILES %}
+            <link rel="stylesheet" href="{% static  user_css_file %}" type="text/css" />
+        {% endfor %}
 
         {% block style %} <!--extra style will be over ride--> {% endblock %}
 
@@ -48,7 +50,7 @@
 
     </div>
 
-<script src="{% static "pykss/js/kss.js" %}"></script>
+<script src='{% static "pykss/js/kss.js" %}'></script>
 <script src="{% static "js/jquery-2.1.1.min.js" %}"></script>
 <script src="{% static "js/bootstrap-kss.min.js" %}"></script>
 

@@ -84,4 +84,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 PYKSS_DIRS = [os.path.join(BASE_DIR, 'static', 'css')]
-
+PYKSS_STATIC_FILES = ['css/forms.css', 'css/buttons.css']
