@@ -5,7 +5,7 @@ introduction
 
 help you launch your style guide site with KSS syntax
 
-.. image:: pictures/picture.png
+.. image:: pictures/screenshot.png
 
 ======
 start
