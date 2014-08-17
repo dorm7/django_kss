@@ -5,7 +5,7 @@ introduction
 
 help you launch your style guide site with KSS syntax
 
-![Screen Shot](pictures/screenshot.png)
+.. image:: pictures/picture.png
 
 ======
 start
