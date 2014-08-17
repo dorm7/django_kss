@@ -11,8 +11,7 @@ help you launch your style guide site with KSS syntax
 start
 ======
 
-
-    pip install -r requirements.txt
+    pip install django-kss
 
 
 Quick start
@@ -21,7 +20,6 @@ Quick start
     INSTALLED_APPS = {
         ...
         "django_kss",
-
         "pykss.contrib.django",
     }
 
@@ -34,6 +32,17 @@ add setting in your project's settings with the two extra config
 * PYKSS_DIRS:  Setup source file path, less sass or css
 * PYKSS_STATIC_FILES: the full path in your assets. final page use it to show content
 
+
+Use the The Preconfigured Django Server
+=======================================
+
+    * git clone https://github.com/timtan/django_kss
+    * cd django_kss
+    * virtualenv venv
+    * source venv/bin/activate
+    * pip install -r requirements.txt
+    * cd django_kss_project
+    * python manage.py runserver
 
 
 Development
