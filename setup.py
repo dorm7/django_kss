@@ -15,9 +15,10 @@ setup(
     license='BSD License',  # example license
     description='A simple Django app to make styleguide',
     long_description=README,
-    url='http://www.example.com/',
+    url='https://github.com/timtan/django_kss',
     author='Tim Hsu',
     author_email='tim.yellow@gmail.com',
+    install_requires = ['pykss'], 
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
