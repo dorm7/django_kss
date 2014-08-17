@@ -4,7 +4,7 @@
 
 DRY 要到一個極致。
 
-只有寫 CSS, 接下來，就可以自重產生 Style Guide 的頁面。
+只有寫 CSS, 接下來，就可以自動產生 Style Guide 的頁面。
 
 CSS -> Generate List, Generate Page
 
@@ -18,4 +18,4 @@ CSS -> Generate List, Generate Page
 2. 畫面可以由 Bootsrap 的　Tab 來分段較順手跟簡單。
 3. 我們需要設定的，是檔案清單位置，還有 CSS 檔位置。
 	* 檔案清單在　setting.py
-	* CSS 位置要自已寫
+	* CSS 位置都寫在　Settting.py 集中　setting
