@@ -81,7 +81,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
 STATIC_URL = '/static/'
 
-PYKSS_DIRS = [os.path.join(BASE_DIR, 'static', 'css')]
-PYKSS_STATIC_FILES = ['css/forms.css', 'css/buttons.css']
+PYKSS_DIRS = [os.path.join(BASE_DIR, 'sass', 'componments')]
+PYKSS_STATIC_FILES = ['css/forms.css', 'css/screen.css']
