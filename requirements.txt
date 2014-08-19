@@ -1,4 +1,3 @@
 Django==1.6.5
--e git+https://github.com/timtan/django_kss.git@8587e74157c02dcb8c00d4ba2f2170a45b88ef5c#egg=django_kss-master
 pykss==0.4
 wsgiref==0.1.2
