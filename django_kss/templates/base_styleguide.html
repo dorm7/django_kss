@@ -3,23 +3,24 @@
     <head>
     {% load static %}
     {% load pykss %}
-        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-        <title>Styleguide Example</title>
-        <link rel="stylesheet" href="{% static "css/layout.css" %}" type="text/css" />
-        <link rel="stylesheet" href="{% static "css/bootstrap-kss.min.css" %}" type="text/css" />
 
-        {% for user_css_file in PYKSS_STATIC_FILES %}
-            <link rel="stylesheet" href="{% static  user_css_file %}" type="text/css" />
-        {% endfor %}
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Styleguide Example</title>
+    <link rel="stylesheet" href="{% static "css/layout.css" %}" type="text/css" />
+    <link rel="stylesheet" href="{% static "css/bootstrap-kss.min.css" %}" type="text/css" />
 
-        {% block style %} <!--extra style will be over ride--> {% endblock %}
+    {% for user_css_file in PYKSS_STATIC_FILES %}
+        <link rel="stylesheet" href="{% static  user_css_file %}" type="text/css" />
+    {% endfor %}
+
+    {% block style %} <!--extra style will be over ride--> {% endblock %}
 
     </head>
 
     <body>
 
 
-    <header>
+    <header style="height: 40px; line-height: 40px; font-wight: bold; padding-left: 20px;">
         {% block header %} Styleguide Example {% endblock %}
     </header>
 

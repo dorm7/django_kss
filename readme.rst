@@ -15,10 +15,10 @@ start
 
 
 
-Project Settings
+Installed APP Settings
 ==========================
 
-
+in settings.py
 
 Add the two app,
 
@@ -29,11 +29,19 @@ Add the two app,
     }
 
 
+KSS Related Settings
+==========================
+
+in settings.py 
+
 Add setting in your project's settings with the two extra config
 
 * PYKSS_DIRS:  Setup source file path, less sass or css
 * PYKSS_STATIC_FILES: the full path in your assets. final page use it to show content
 
+
+urls.py settings
+================
 
 Routing, add the following two lines in your project's urls.py
 
@@ -57,6 +65,7 @@ Use the The Preconfigured Django Server
     * pip install -r requirements.txt
     * cd django_kss_project
     * python manage.py runserver
+    * refer the KSS Related settings's section to full fill your need.
 
 
 Development

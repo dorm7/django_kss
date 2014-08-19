@@ -87,5 +87,7 @@ STATICFILES_DIRS = (
 
 STATIC_URL = '/static/'
 
-PYKSS_DIRS = [os.path.join(BASE_DIR, 'sass', 'componments')]
+#PYKSS_DIRS = [os.path.join(BASE_DIR, 'sass', 'componments')]
+PYKSS_DIRS = [os.path.join(BASE_DIR, 'static', 'css')]
+
 PYKSS_STATIC_FILES = ['css/forms.css', 'css/screen.css']
