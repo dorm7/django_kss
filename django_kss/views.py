@@ -26,6 +26,11 @@ class AutoStyleguideView(StyleguideView):
             )
         )
 
+        if not self.kwargs['section']:
+            current_section = sections[0]
+        else:
+            current_section = self.kwargs['section']
+
         section_descriptions = {}
         for section in sections:
             if section in styleguide.sections:
@@ -34,7 +39,7 @@ class AutoStyleguideView(StyleguideView):
             else:
                 section_descriptions[section] = section
 
-        context.update({'sections': sections})
+        context.update({'current_section': current_section})
         context.update({'section_descriptions': section_descriptions})
         context.update({'PYKSS_STATIC_FILES':
                         getattr(settings, "PYKSS_STATIC_FILES", [])

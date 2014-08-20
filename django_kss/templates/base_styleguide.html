@@ -27,11 +27,12 @@
 
     <div id="wrapper">
 
+
         <!-- Nav tabs -->
         <ul role="main" class='nav nav-pills nav-stacked' role="tablist" data-js-bs-tab>
            {% for section, description in section_descriptions.items %}
-           <li>
-               <a href="#guide-{{ section }}" data-js-bs-tab-trigger-item="#guide-{{ section }}" role="tab">
+           <li {% if section == current_section %} class='active' {% endif %}>
+               <a href="{% url 'styleguide' section=section %}" role="tab">
                  {{ description }}
                </a>
            </li>
@@ -40,13 +41,8 @@
 
 
         <!-- Whole Contents -->
-        <div class="tab-content">
-        {% for section in sections %}
-            <div class="tab-pane" id="guide-{{ section }}">
-                {% renderstyleguide styleguide section %}
-            </div>
-        {% endfor %}
-        </div>
+        {% renderstyleguide styleguide current_section %}
+
 
 
     </div>
@@ -55,15 +51,6 @@
 <script src="{% static "js/jquery-2.1.1.min.js" %}"></script>
 <script src="{% static "js/bootstrap-kss.min.js" %}"></script>
 
-<script type="text/javascript">
-$(function() {
-    $('[data-js-bs-tab-trigger-item=' + location.hash + ']').tab('show');
-
-    $('[data-js-bs-tab] a').click(function (e) {
-      $(this).tab('show');
-    });
-});
-</script>
 
 {% block buttom %} {% endblock %}
 
