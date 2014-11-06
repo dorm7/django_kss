@@ -5,3 +5,4 @@ dist/
 django_kss.egg-info/
 build/
 django_kss_project/db.sqlite3
+*.swp

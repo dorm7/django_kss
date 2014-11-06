@@ -9,7 +9,7 @@ urlpatterns = patterns(
     # url(r'^blog/', include('blog.urls')),
 
     url(
-        r'^(?P<section>\d+)$',
+        r'^(?P<section>\d*)$',
         AutoStyleguideView.as_view(template_name='styleguide.html'),
         name='styleguide',
     ),
