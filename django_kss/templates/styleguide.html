@@ -31,10 +31,10 @@
 
 
         <!-- Nav tabs -->
-        <ul role="main" class='nav nav-pills nav-stacked' role="tablist" data-js-bs-tab>
+        <ul role="main" class='styleguide-nav' role="tablist" data-js-bs-tab>
            {% for section, description in section_descriptions.items %}
-           <li {% if section == current_section %} class='active' {% endif %}>
-               <a href="{% url 'styleguide' section=section %}" role="tab">
+           <li class="styleguide-nav-list {% if section == current_section %} active {% endif %}">
+               <a class='styleguid-nav-anchor' href="{% url 'styleguide' section=section %}" role="tab">
                  {{ description }}
                </a>
            </li>
