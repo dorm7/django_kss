@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-kss',
-    version='0.1.2',
+    version='0.1.3',
     packages=['django_kss'],
     include_package_data=True,
     license='BSD License',  # example license
@@ -18,7 +18,7 @@ setup(
     url='https://github.com/timtan/django_kss',
     author='Tim Hsu',
     author_email='tim.yellow@gmail.com',
-    install_requires = ['pykss'], 
+    install_requires = ['pykss','Pygments'], 
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
