@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from .views import AutoStyleguideView
+from .views import AutoStyleGuideView
 
 
 urlpatterns = patterns(
@@ -10,7 +10,7 @@ urlpatterns = patterns(
 
     url(
         r'^(?P<section>\d*)$',
-        AutoStyleguideView.as_view(template_name='styleguide.html'),
+        AutoStyleGuideView.as_view(template_name='styleguide.html'),
         name='styleguide',
     ),
 )

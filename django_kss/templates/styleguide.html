@@ -7,22 +7,22 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>Styleguide Example</title>
     <link rel="stylesheet" href="{% static "css/layout.css" %}" type="text/css" />
-    <link rel="stylesheet" href="{% static "css/prism.css" %}" type="text/css" />
 
- 
-
-    {% for user_css_file in PYKSS_STATIC_FILES %}
+    {% for user_css_file in view.css_source_files %}
         <link rel="stylesheet" href="{% static  user_css_file %}" type="text/css" />
     {% endfor %}
 
     {% block style %} <!--extra style will be over ride--> {% endblock %}
+        <style>
+            {{ view.pygament_style }}
+        </style>
 
     </head>
 
     <body>
 
 
-    <header class='styleguide-header' style="height: 40px; font-wight: bold; padding-left: 20px;">
+    <header class='styleguide-header' style="font-wight: bold; padding-left: 20px;">
         {% block header %} Styleguide Example {% endblock %}
     </header>
 
@@ -50,7 +50,6 @@
     </div>
 
 <script src='{% static "pykss/js/kss.js" %}'></script>
-<script src='{% static "js/prism.js" %}'></script>
 
 
 {% block buttom %} {% endblock %}

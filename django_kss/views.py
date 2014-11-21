@@ -1,14 +1,22 @@
-from django.shortcuts import render
+from pygments.formatters import HtmlFormatter
 from django.conf import settings
+from django.utils.functional import cached_property
 from pykss.contrib.django.views import StyleguideView
-import itertools
 
 
-class AutoStyleguideView(StyleguideView):
+class AutoStyleGuideView(StyleguideView):
+
+    @cached_property
+    def css_source_files(self):
+        return getattr(settings, "PYKSS_STATIC_FILES", [])
+
+    @cached_property
+    def pygament_style(self):
+        return HtmlFormatter().get_style_defs('.highlight')
 
     def get_context_data(self, **kwargs):
 
-        context = super(AutoStyleguideView, self).get_context_data(**kwargs)
+        context = super(AutoStyleGuideView, self).get_context_data(**kwargs)
         styleguide = context["styleguide"]
 
         def section_main_key(tp):
@@ -41,7 +49,4 @@ class AutoStyleguideView(StyleguideView):
 
         context.update({'current_section': current_section})
         context.update({'section_descriptions': section_descriptions})
-        context.update({'PYKSS_STATIC_FILES':
-                        getattr(settings, "PYKSS_STATIC_FILES", [])
-                        })
         return context
