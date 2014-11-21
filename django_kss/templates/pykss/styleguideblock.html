@@ -37,7 +37,7 @@
     {% block styleguide_code %}
         {%if section.example %}
             <div class="styleguide-element">
-            {{ section.example| highlight_code:'python' | safe}}
+            {{ section.example| highlight_code:'html' | safe}}
             </div>
         {%endif%}
     {% endblock %}
