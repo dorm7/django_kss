@@ -22,11 +22,13 @@ in settings.py
 
 Add the two app,
 
-    INSTALLED_APPS = {
-        ...
+    INSTALLED_APPS += (
+
         "django_kss",
+
         "pykss.contrib.django",
-    }
+
+    )
 
 
 KSS Related Settings
