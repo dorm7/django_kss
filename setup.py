@@ -9,8 +9,8 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-kss',
-    version='0.1.4',
-    packages=['django_kss'],
+    version='0.1.7',
+    packages=['django_kss', 'django_kss.templatetags'],
     include_package_data=True,
     license='BSD License',  # example license
     description='A simple Django app to make styleguide',
