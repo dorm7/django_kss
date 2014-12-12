@@ -78,16 +78,18 @@ a img{ border:none; }
     padding-top: 15px;
     border-top: 1px solid #eee; }
   .styleguide-example .styleguide-element .styleguide-modifier-name {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 5px 8px;
-    font-size: 11px;
-    color: #999;
-    background: #f9f9f9;
-    border: 1px solid #eee;
-    border-top: none; }
+   display: block;
+background-color: rgba(0,0,0,0.5);
+/* position: absolute; */
+/* top: 0; */
+/* right: 0; */
+/* padding: 5px 8px; */
+font-size: 14px;
+color: gray;
+background: rgba(0,0,0,0.1);
+border: 1px solid #eee;
+border-top: none;
+ }
   .styleguide-example .styleguide-html {
     padding: 5px 10px;
     background: #edf6f8;
