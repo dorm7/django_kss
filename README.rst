@@ -38,6 +38,15 @@ Add setting in your project's settings with the two extra config
 * PYKSS_STATIC_FILES: the full path in your assets. final page use it to show content
 
 
+for example:
+
+.. code-block:: python
+
+    import os
+    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+    PYKSS_DIRS = [os.path.join(BASE_DIR, 'static', 'css')]
+    PYKSS_STATIC_FILES = ['css/forms.css', 'css/screen.css']
+
 
 urls.py settings
 ================
