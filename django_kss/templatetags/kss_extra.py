@@ -7,6 +7,8 @@ from pygments.util import ClassNotFound
 
 register = template.Library()
 
+# Don't use this in the future, just include pykss is okay
+
 @register.filter(name='highlight_code')
 def highlight_code(code, lang):
     if code is not None:
