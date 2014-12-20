@@ -62,6 +62,48 @@ add the url patterns:
     url(r'^$', include(django_kss.urls)),
 
 
+Writing The KSS in your scss/less/css file
+==========================================
+
+
+.. code-block:: scss
+
+	/*
+	Buttons
+
+	Styleguide 1
+	*/
+
+
+	/*
+	Your standard form button.
+
+	.btn-danger   -  danger
+	.btn-warning  -  warning
+	.btn-info     -  info
+
+
+	Example:
+		<button class="liftedBtn $modifier_class" >按鈕</button>
+
+	Styleguide 1.1
+	*/
+
+	.liftedBtn{
+		@extend .btn;
+		position: relative;
+		border-width: 0;
+		letter-spacing: 1px;
+		border-bottom-color: rgba(30,30,30,0.3);
+		border-bottom-width: 0;
+		transition: all 0.2s;
+		bottom: 0;
+		&:hover{
+			bottom: $strong-border-width;
+			border-bottom-width: $strong-border-width;
+		}
+	}
+
 
 extend styleguide.html
 ======================
