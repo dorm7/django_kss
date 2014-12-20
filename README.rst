@@ -7,32 +7,28 @@ help you launch your style guide site with KSS syntax
 
 .. image:: pictures/screenshot.png
 
-======
+=====
 start
-======
+=====
 
     pip install django-kss
 
 
 
 Installed APP Settings
-==========================
+======================
 
 in settings.py
 
 Add the two app,
 
     INSTALLED_APPS += (
-
         "django_kss",
-
-        "pykss.contrib.django",
-
     )
 
 
 KSS Related Settings
-==========================
+====================
 
 in settings.py 
 
@@ -40,6 +36,7 @@ Add setting in your project's settings with the two extra config
 
 * PYKSS_DIRS:  Setup source file path, less sass or css
 * PYKSS_STATIC_FILES: the full path in your assets. final page use it to show content
+
 
 
 urls.py settings
@@ -55,6 +52,52 @@ add the url patterns:
 
     url(r'^$', include(django_kss.urls)),
 
+
+
+extend styleguide.html
+======================
+
+some times, you need to use extra css or js in your style guide. so the default template is not enough.
+you can just use the following way to make a better style guide
+
+put the following html in your any template folder
+
+.. code-block:: html
+
+    {% extends 'styleguide.html' %}
+
+    {% load compress %}
+    {% load staticfiles %}
+
+
+    {% block style %}
+        {% compress css %}
+            <link rel="stylesheet" type="text/x-scss" href="{% static 'css/ntu.scss' %}">
+        {% endcompress %}
+    {% endblock %}
+
+
+    {% block bottom %}
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% endblock %}
+
+in your views.py, just specify the template
+
+.. code-block:: python
+
+
+    from django_kss.views import AutoStyleGuideView
+
+
+    class StyleGuideView(AutoStyleGuideView):
+        template_name = 'filename you like .html'
+
+
+specify your the view in your urls.py ( replace the package name with yours )
+
+.. code-block:: python
+
+    url(r'^style_guide/(?P<section>\d*)$', style.views.StyleGuideView.as_view(), name='styleguide'),
 
 
 Use the The Preconfigured Django Server
