@@ -22,6 +22,8 @@ in settings.py
 
 Add the two app,
 
+.. code-block:: python
+
     INSTALLED_APPS += (
         "django_kss",
     )
