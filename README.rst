@@ -3,7 +3,8 @@
 introduction
 ************
 
-help you launch your style guide site with KSS syntax
+Help you launch your style guide site with django in KSS syntax. you can integrate the style giude in your site easily.
+I use it every day. feel free to give me any suggestion.
 
 .. image:: pictures/screenshot.png
 
