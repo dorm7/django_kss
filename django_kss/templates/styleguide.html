@@ -5,8 +5,10 @@
     {% load pykss %}
 
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Styleguide Example</title>
-    <link rel="stylesheet" href="{% static "css/layout.css" %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}" type="text/css" />
 
     {% for user_css_file in view.css_source_files %}
         <link rel="stylesheet" href="{% static  user_css_file %}" type="text/css" />
@@ -31,7 +33,7 @@
 
 
         <!-- Nav tabs -->
-        <ul role="main" class='styleguide-nav' role="tablist" data-js-bs-tab>
+        <ul role="main" class='styleguide-nav styleguide-hidden-xs' role="tablist" data-js-bs-tab>
            {% for section, description in section_descriptions.items %}
            <li class="styleguide-nav-list {% if section == current_section %} active {% endif %}">
                <a class='styleguid-nav-anchor' href="{% url 'styleguide' section=section %}" role="tab">

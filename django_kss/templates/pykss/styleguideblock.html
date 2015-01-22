@@ -6,7 +6,7 @@
     {% endblock %}
     
     {% block styleguide_description %}
-        <div class="styleguide-description">
+        <div class="styleguide-description styleguide-hidden-xs">
             <p>{{ section.description }}</p>
             {% if section.modifiers %}
             <ul class="styleguide-modifier">
@@ -36,7 +36,7 @@
 
     {% block styleguide_code %}
         {%if section.example %}
-            <div class="styleguide-element">
+            <div class="styleguide-element styleguide-hidden-xs">
             {{ section.example| highlight_code:'html' | safe}}
             </div>
         {%endif%}
