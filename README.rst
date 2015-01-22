@@ -15,12 +15,12 @@ start
 
 
 
-Installed APP Settings
+Settings
 ======================
 
-in settings.py
+in yout settings.py
 
-Add the two app,
+Add the app,
 
 .. code-block:: python
 
@@ -110,7 +110,7 @@ Writing The KSS in your scss/less/css file
 extend styleguide.html
 ======================
 
-some times, you need to use extra css or js in your style guide. so the default template is not enough.
+sometimes, you need to use extra css or js in your style guide. so the default template is not enough.
 you can just use the following way to make a better style guide
 
 put the following html in your any template folder
