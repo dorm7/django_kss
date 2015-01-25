@@ -4,14 +4,14 @@ from django.utils.functional import cached_property
 
 from django.conf import settings
 from django.views.generic.base import TemplateView
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 
 
 from . import pykss
 
 def render_prototype(request, html):
 	prototype_directory = dirs = getattr(settings, 'PROTOTYPR_DIR', "prototype")
-	return render_to_response( os.path.join(prototype_directory, html))
+	return render( os.path.join(prototype_directory, html))
 
 class StyleguideMixin(object):
 
