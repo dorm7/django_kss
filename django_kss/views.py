@@ -11,7 +11,7 @@ from . import pykss
 
 def render_prototype(request, html):
 	prototype_directory = dirs = getattr(settings, 'PROTOTYPR_DIR', "prototype")
-	return render( os.path.join(prototype_directory, html))
+	return render(request, os.path.join(prototype_directory, html))
 
 class StyleguideMixin(object):
 
