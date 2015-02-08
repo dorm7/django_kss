@@ -10,7 +10,7 @@
     <title>Styleguide Example</title>
     <link rel="stylesheet" href="{% static 'css/layout.css' %}" type="text/css" />
 
-    {% for user_css_file in view.css_source_files %}
+    {% for user_css_file in css_source_files %}
         <link rel="stylesheet" href="{% static  user_css_file %}" type="text/css" />
     {% endfor %}
 
@@ -24,8 +24,17 @@
     <body>
 
 
-    <header class='styleguide-header' style="font-wight: bold; padding-left: 20px;">
-        {% block header %} Styleguide Example {% endblock %}
+    <header class='styleguide-header'>
+        <div class="nav">
+            <div class="brand">
+                {% block header %} Django Style Guide {% endblock %}
+            </div>
+            <ul>
+                {% for name, setting in styleguide_settings %}
+                    <li class="home"><a class='{% if app_name == setting.app_name %} active {% endif %}' href="{% url 'styleguide' app_name=setting.app_name  %}">{{ setting.verbose_name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
     </header>
 
 
@@ -36,7 +45,7 @@
         <ul role="main" class='styleguide-nav styleguide-hidden-xs' role="tablist" data-js-bs-tab>
            {% for section, description in section_descriptions.items %}
            <li class="styleguide-nav-list {% if section == current_section %} active {% endif %}">
-               <a class='styleguid-nav-anchor' href="{% url 'styleguide' section=section %}" role="tab">
+               <a class='styleguid-nav-anchor' href="{% url 'styleguide' app_name=app_name section=section %}" role="tab">
                  {{ description }}
                </a>
            </li>
