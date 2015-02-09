@@ -70,11 +70,11 @@ add filename called styleguide.py in your app.
 	}
 
 
-source_dir  where you write you kss comment and css files
+source_dir:  Where you write you kss comment and css files
 
-verbose_name  your app name 
+verbose_name:  Your app name 
 
-target_files  if you use scss, put which file you want to compile and show up in your link tag
+target_files:  If you use scss, put the scss file you want to compile
 
 
 urls.py settings
@@ -101,7 +101,7 @@ html
 
 for F2E or designer
 
-put your more complete html in templates/prototype/
+put your complete html in templates/prototype/
 
 you can view it automatically in the site
 
