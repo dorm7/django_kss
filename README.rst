@@ -12,7 +12,7 @@ I use it every day. feel free to give me any suggestion.
 start
 =====
 
-    pip install django-styleguide
+    pip install django-kss-styleguide
 
 
 
