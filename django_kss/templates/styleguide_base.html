@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    {% load static %}
+    {% load pykss %}
+    {% load compress %}
+
+
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Styleguide Example</title>
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}" type="text/css" />
+
+    {% for user_css_file, is_scss in css_source_files %}
+        {% if is_scss%}
+            {% compress css %}
+            <link rel="stylesheet" href="{% static  user_css_file %}" type="text/x-scss" />
+            {% endcompress %}
+        {% else %}
+            <link rel="stylesheet" href="{% static  user_css_file %}" type="text/css" />
+        {% endif %}
+    {% endfor %}
+
+    {% block style %} <!--extra style will be over ride--> {% endblock %}
+        <style>
+            {{ view.pygament_style }}
+        </style>
+
+    </head>
+
+    <body>
+    {% block content %} {% endblock %}
+    {% block buttom %} {% endblock %}
+
+    <script src='{% static "js/kss.js" %}'></script>
+    <script src="http://localhost:35729/livereload.js?snipver=1"></script>
+
+</body>
+</html>

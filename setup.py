@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-styleguide',
-    version='0.3.0',
+    version='0.5.0',
     packages=find_packages() ,
     include_package_data=True,
     license='BSD License',  # example license
@@ -18,7 +18,7 @@ setup(
     url='https://github.com/timtan/django_kss',
     author='Tim Hsu',
     author_email='tim.yellow@gmail.com',
-    install_requires = ['Pygments'], 
+    install_requires = ['Pygments', 'django_compressor'],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',

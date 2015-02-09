@@ -12,7 +12,7 @@ I use it every day. feel free to give me any suggestion.
 start
 =====
 
-    pip install django-kss
+    pip install django-styleguide
 
 
 
@@ -30,25 +30,48 @@ Add the app,
     )
 
 
-KSS Related Settings
+Related Settings
 ====================
 
 in settings.py 
 
-Add setting in your project's settings with the two extra config
+because scss is very common, we support it via djagno compressor
+Add setting  about django compressor.
 
-* PYKSS_DIRS:  Setup source file path, less sass or css
-* PYKSS_STATIC_FILES: the full path in your assets. final page use it to show content
+.. code-block: python
+
+	COMPRESS_PRECOMPILERS = (
+		('text/x-scss', 'django_libsass.SassCompiler'),
+	)
+	STATICFILES_FINDERS = (
+		'django.contrib.staticfiles.finders.FileSystemFinder',
+		'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+		'compressor.finders.CompressorFinder',
+	)
+	#  Django Compressor for development. so it can put image to correct place
+	COMPRESS_ENABLED = True
+	COMPRESS_REBUILD_TIMEOUT = 0
+
+	STATIC_ROOT = '/tmp/root'
+
+in your app. 
+
+add filename called styleguide.py in your app. 
+
+.. code-block: python
+
+	styleguide = {
+		'source_dir': 'static/css',
+		'verbose_name': 'Sample APP2',   #Optional
+		'target_files': 'static/css/form.scss'  # optional
+	}
 
 
-for example:
+source_dir  where you write you kss comment and css files
 
-.. code-block:: python
+verbose_name  your app name 
 
-    import os
-    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-    PYKSS_DIRS = [os.path.join(BASE_DIR, 'static', 'css')]
-    PYKSS_STATIC_FILES = ['css/forms.css', 'css/screen.css']
+target_files  if you use scss, put which file you want to compile and show up in your link tag
 
 
 urls.py settings
@@ -58,11 +81,26 @@ Routing, add the following two lines in your project's urls.py
 
 import:
 
+.. code-block: python
+
     import django_kss.urls
 
 add the url patterns:
 
+.. code-block: python
+
     url(r'^$', include(django_kss.urls)),
+
+
+
+html
+====
+
+for F2E or designer
+
+put your more complete html in templates/prototype/
+
+you can view it automatically in the site
 
 
 Writing The KSS in your scss/less/css file
@@ -108,65 +146,4 @@ Writing The KSS in your scss/less/css file
 	}
 
 
-extend styleguide.html
-======================
 
-sometimes, you need to use extra css or js in your style guide. so the default template is not enough.
-you can just use the following way to make a better style guide
-
-put the following html in your any template folder
-
-.. code-block:: html
-
-    {% extends 'styleguide.html' %}
-
-    {% load compress %}
-    {% load staticfiles %}
-
-
-    {% block style %}
-        {% compress css %}
-            <link rel="stylesheet" type="text/x-scss" href="{% static 'css/ntu.scss' %}">
-        {% endcompress %}
-    {% endblock %}
-
-
-    {% block bottom %}
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    {% endblock %}
-
-in your views.py, just specify the template
-
-.. code-block:: python
-
-
-    from django_kss.views import AutoStyleGuideView
-
-
-    class StyleGuideView(AutoStyleGuideView):
-        template_name = 'filename you like .html'
-
-
-specify your the view in your urls.py ( replace the package name with yours )
-
-.. code-block:: python
-
-    url(r'^style_guide/(?P<section>\d*)$', style.views.StyleGuideView.as_view(), name='styleguide'),
-
-
-Use the The Preconfigured Django Server
-=======================================
-
-    * git clone https://github.com/timtan/django_kss
-    * cd django_kss
-    * virtualenv venv
-    * source venv/bin/activate
-    * pip install -r requirements.txt
-    * cd django_kss_project
-    * python manage.py runserver
-    * refer the KSS Related settings's section to full fill your need.
-
-
-
-
-Feel Free to submit issue. I use the app frequently and happy to know if you like it. 

@@ -8,8 +8,10 @@ Example:
 
 Styleguide 1.1
 */
+
+$color: yellow;
 input.error {
-    border: 1px solid red;
+    border: 1px solid $color;
 }
 
 
@@ -25,5 +27,5 @@ Example:
 Styleguide 1.2
 */
 input.error2 {
-    border: 1px solid red;
+  border: 1px solid $color;
 }

@@ -22,11 +22,21 @@ SECRET_KEY = 'o&_8@#1cw8$2+%gr%%g_t$5y7+v((0#qzsc-f_x)4j#fiy(+75'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+    'django.core.context_processors.request',
+)
 # Application definition
 
 INSTALLED_APPS = (
@@ -36,6 +46,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "compressor",
     'django_kss',
     'sample',
     'sample2',
@@ -88,7 +99,17 @@ STATICFILES_DIRS = (
 
 STATIC_URL = '/static/'
 
-#PYKSS_DIRS = [os.path.join(BASE_DIR, 'sass', 'componments')]
-PYKSS_DIRS = [os.path.join(BASE_DIR, 'static', 'css')]
 
-PYKSS_STATIC_FILES = ['css/forms.css', 'css/screen.css']
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+#  Django Compressor for development. so it can put image to correct place
+COMPRESS_ENABLED = True
+COMPRESS_REBUILD_TIMEOUT = 0
+
+STATIC_ROOT = '/tmp/root'

@@ -90,6 +90,11 @@ def _complete_setting(m):
         target_files = os.listdir(abs_source_dir)
         target_files = map(lambda x: os.path.join(source_dir, x), target_files)
 
+    try:
+        htmls = os.listdir(os.path.join(app_path, 'templates', 'prototype'))
+    except OSError:
+        htmls = []
+
     target_files = map(_remove_static, target_files)
 
     styleguide = m.styleguide.copy()
@@ -97,6 +102,7 @@ def _complete_setting(m):
     styleguide['app_name'] = m.__name__
     styleguide['verbose_name'] = verbose_name
     styleguide['target_files'] = target_files
+    styleguide['htmls'] = htmls
     return styleguide
 
 

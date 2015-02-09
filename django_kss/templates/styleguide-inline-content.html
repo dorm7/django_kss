@@ -1,0 +1,6 @@
+{% extends 'styleguide.html' %}
+
+{% block section %}
+    <a class="styleguide-full-page" href="{% url 'prototype' html=html%}"> Full Page Version </a>
+    {% include inline_content %}
+{% endblock %}
