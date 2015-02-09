@@ -150,3 +150,24 @@ Writing The KSS in your scss/less/css file
 
 
 
+
+===============
+One More Things
+===============
+
+the base template is already integrate livereload. 
+
+to utilize livereload, 
+
+
+.. code-block:: bash
+
+	sudo pip install livereload
+
+
+and type 'livereload .' in you repository root. 
+
+you can see all the braowser will reflect your change
+
+
+
