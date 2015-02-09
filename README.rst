@@ -25,7 +25,9 @@ Add the app,
 
 .. code-block:: python
 
+
     INSTALLED_APPS += (
+		"compressor",
         "django_kss",
     )
 

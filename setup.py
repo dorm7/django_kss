@@ -18,7 +18,7 @@ setup(
     url='https://github.com/timtan/django_kss',
     author='Tim Hsu',
     author_email='tim.yellow@gmail.com',
-    install_requires = ['Pygments', 'django_compressor'],
+    install_requires = ['Pygments', 'django_compressor', 'django-libsass'],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
