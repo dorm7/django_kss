@@ -95,3 +95,12 @@ class InlineTemplateStyleGuideView(AutoStyleGuideView):
         context.update({'inline_content': 'prototype/' + self.kwargs['html']})
         context.update({'html': self.kwargs['html']})
         return context
+
+class FullTemplateStyleGuideView(AutoStyleGuideView):
+
+    template_name = 'styleguide-full-content.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(FullTemplateStyleGuideView, self).get_context_data(**kwargs)
+        context.update({'inline_content': 'prototype/' + self.kwargs['html']})
+        return context
