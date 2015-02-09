@@ -16,8 +16,9 @@ start
 
 
 
+========
 Settings
-======================
+========
 
 in yout settings.py
 
@@ -25,22 +26,22 @@ Add the app,
 
 .. code-block:: python
 
-
     INSTALLED_APPS += (
 		"compressor",
         "django_kss",
     )
 
 
+================
 Related Settings
-====================
+================
 
 in settings.py 
 
 because scss is very common, we support it via djagno compressor
 Add setting  about django compressor.
 
-.. code-block: python
+.. code-block:: python
 
 	COMPRESS_PRECOMPILERS = (
 		('text/x-scss', 'django_libsass.SassCompiler'),
@@ -60,7 +61,7 @@ in your app.
 
 add filename called styleguide.py in your app. 
 
-.. code-block: python
+.. code-block:: python
 
 	styleguide = {
 		'source_dir': 'static/css',
@@ -83,13 +84,13 @@ Routing, add the following two lines in your project's urls.py
 
 import:
 
-.. code-block: python
+.. code-block:: python
 
     import django_kss.urls
 
 add the url patterns:
 
-.. code-block: python
+.. code-block:: python
 
     url(r'^$', include(django_kss.urls)),
 
