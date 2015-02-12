@@ -38,6 +38,11 @@ class AutoStyleGuideView(TemplateView):
     def styleguide_settings(self, settings):
         return settings.items()
 
+    def domain(self):
+        host = self.request.META['HTTP_HOST']
+        domain = host.split(":")[0]
+        return domain 
+
     def _get_settings(self):
         return utils.get_styleguide()
 
