@@ -154,7 +154,7 @@
     float: none;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 14px;
-    height: 40px;
+    min-height: 40px;
     line-height: 20px;
     list-style-image: none;
     list-style-position: outside;
@@ -174,7 +174,7 @@
     display: block;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 14px;
-    height: 40px;
+    min-height: 40px;
     line-height: 20px;
     list-style-image: none;
     list-style-position: outside;

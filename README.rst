@@ -6,6 +6,8 @@ introduction
 Help you launch your style guide site with django in KSS syntax. you can integrate the style giude in your site easily.
 I use it every day. feel free to give me any suggestion.
 
+ I now change the name to django-kss-styleguide https://pypi.python.org/pypi/django-kss-styleguide/
+
 .. image:: pictures/screenshot.png
 
 =====
