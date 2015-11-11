@@ -1,0 +1,46 @@
+{% extends 'django_kss/base.html' %}
+{% load static %}
+{% load styleguide %}
+{% load compress %}
+
+{% block content %}
+
+<header class='styleguide-header'>
+    <div class="nav">
+
+        <div class="brand">
+            {% block header %} Django Style Guide {% endblock %}
+        </div>
+
+    </div>
+</header>
+
+
+<div id="wrapper">
+
+    <!-- Nav tabs -->
+    <ul role="main" class='styleguide-nav styleguide-hidden-xs' role="tablist" data-js-bs-tab>
+        {% for filename in css_source_files %}
+            <li class="styleguide-nav-list {% if filename == current_file %} active {% endif %}">
+                <a class='styleguid-nav-anchor' href="{% url 'styleguide' filename=filename %}" role="tab">
+                    {{ filename }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+    {% block section %}
+        {% for section in current_sections %}
+            {% renderstyleguide styleguide section.section %}
+        {% endfor %}
+    {% endblock %}
+
+
+</div>
+
+
+
+
+
+{% endblock %}

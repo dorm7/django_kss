@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+{% load styleguide %}
+{% load compress %}
+<html>
+    <head>
+
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Styleguide Example</title>
+
+    <link rel="stylesheet" href="{% static 'django_kss/layout.css' %}" type="text/css" />
+
+    {%  styleguide_link_style_tag view.style_name %}
+
+    <style>
+        {% styleguide_highlight_style %}
+    </style>
+
+    {% block style %} <!--extra style will be over ride--> {% endblock %}
+
+    </head>
+
+    <body>
+
+    {% block content %} {% endblock %}
+
+    {% block buttom %} {% endblock %}
+
+    <script src="http://{{ view.domain }}:35729/livereload.js?snipver=1"></script>
+
+</body>
+</html>

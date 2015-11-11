@@ -3,15 +3,21 @@ from django import template
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
-
 from pygments.util import ClassNotFound
-
 
 register = template.Library()
 
 
-@register.filter(name='highlight_code')
-def highlight_code(code, lang):
+@register.inclusion_tag('django_kss/link_style_tag.html')
+def styleguide_link_style_tag(style_filename):
+    if style_filename.lower().endswith('scss'):
+        return {'type': 'scss', 'filename': style_filename}
+    else:
+        return {'type': 'css', 'filename': style_filename}
+
+
+@register.filter(name='styleguide_highlight_code')
+def styleguide_highlight_code(code, lang):
     if code is not None:
         try:
             lexer = get_lexer_by_name(lang, encoding='utf-8', stripall=True, startinline=True)
@@ -24,8 +30,15 @@ def highlight_code(code, lang):
         return code
 
 
-class BaseStyleguideNode(template.Node):
+STYLES = HtmlFormatter().get_style_defs('.highlight')
 
+
+@register.simple_tag
+def styleguide_highlight_style():
+    return STYLES
+
+
+class BaseStyleguideNode(template.Node):
     def __init__(self, styleguide, reference, template_name, nodelist):
         self.styleguide = styleguide
         self.reference = reference
@@ -41,19 +54,19 @@ class BaseStyleguideNode(template.Node):
 
         if len(bits) < 2:
             raise template.TemplateSyntaxError("styleguideblock expected at "
-                "least two arguments")
+                                               "least two arguments")
 
         elif len(bits) == 2:
             styleguide, reference = bits
-            template_name = '"pykss/styleguideblock.html"'
+            template_name = '"django_kss/styleguideblock.html"'
 
         elif len(bits) >= 3 and bits[2] != 'using':
             raise template.TemplateSyntaxError("styleguideblock expected using "
-                "as the third argument")
+                                               "as the third argument")
 
         elif len(bits) == 3:
             raise template.TemplateSyntaxError("styleguideblock expects a "
-                "template name after 'using'")
+                                               "template name after 'using'")
 
         else:
             styleguide, reference, _using, template_name = bits
@@ -69,8 +82,10 @@ class BaseStyleguideNode(template.Node):
         reference = self.reference.resolve(context)
         template_name = self.template_name.resolve(context)
 
+        print list(styleguide.sections.iteritems())
+        print 'reference', reference
         sections = sorted([sec for ref, sec in styleguide.sections.iteritems()
-                    if ref.startswith(reference)], key=lambda s: s.section)
+                           if ref.startswith(reference)], key=lambda s: s.section)
 
         if self.nodelist:
             example = self.nodelist.render(context).strip()
@@ -89,7 +104,6 @@ class BaseStyleguideNode(template.Node):
 
 
 class StyleguideBlockNode(BaseStyleguideNode):
-
     @classmethod
     def dispatch(cls, parser, styleguide, reference, template_name):
         nodelist = parser.parse(('endstyleguideblock',))
@@ -103,7 +117,6 @@ class StyleguideBlockNode(BaseStyleguideNode):
 
 
 class RenderStyleguideNode(BaseStyleguideNode):
-
     @classmethod
     def dispatch(cls, parser, styleguide, reference, template_name):
         return cls(

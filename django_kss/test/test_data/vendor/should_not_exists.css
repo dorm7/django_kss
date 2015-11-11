@@ -7,7 +7,7 @@ Form input sample.
 Example:
     <input type="text" class="$modifier_class" />
 
-Styleguide 2.1
+Styleguide 1.1
 */
 
 input.error {
@@ -17,15 +17,6 @@ input.warn{
     border: 10px solid yellow;
 }
 
-/*
-.warm - When form warm.
-input.warm{
-    border: 10px solid yellow;
-}
- */
-
-
-
 
 /*
 
@@ -36,24 +27,7 @@ Form input.
 Example:
     <input type="text" class="$modifier_class" />
 
-Styleguide 2.2
-
-*/
-input.error2 {
-    border: 1px solid red;
-}
-
-
-/*
-
-Form input.
-
-.error2 - When form error.
-
-Example:
-    <input type="text" class="$modifier_class" />
-
-Styleguide 3.1
+Styleguide 1.2
 
 */
 input.error2 {

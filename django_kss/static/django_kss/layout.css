@@ -217,10 +217,9 @@
 
 .styleguide-header .brand{
     background-color: #444;
-    float: left;
     font-size: 1.2em;
-    margin-left: 20px;
     color: #fff;
+    padding-left: 20px;
 }
 
 .styleguide-header .nav ul {

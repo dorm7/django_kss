@@ -1,0 +1,10 @@
+{% load compress %}
+{% load static %}
+
+{% compress css %}
+    {% if type == 'scss' %}
+        <link rel="stylesheet" href="{% static  filename %}" type="text/x-scss" />
+    {% elif type == 'css' %}
+        <link rel="stylesheet" href="{% static  filename %}" />
+    {% endif %}
+{% endcompress %}
