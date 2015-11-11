@@ -10,13 +10,20 @@
 
     <title>Styleguide Example</title>
 
-    <link rel="stylesheet" href="{% static 'django_kss/layout.css' %}" type="text/css" />
+    {%  styleguide_link_style_tag view.style_names %}
 
-    {%  styleguide_link_style_tag view.style_name %}
+    <link rel="stylesheet" href="{% static 'django_kss/css/layout.css' %}" type="text/css" />
 
-    <style>
-        {% styleguide_highlight_style %}
-    </style>
+        <style>
+            body, html{
+                height: 100%;
+                background-color: #EBEBEC;
+            }
+            #wrapper{
+                height: 90%;
+            }
+
+        </style>
 
     {% block style %} <!--extra style will be over ride--> {% endblock %}
 
@@ -24,11 +31,10 @@
 
     <body>
 
-    {% block content %} {% endblock %}
+    {% block content %}
 
-    {% block buttom %} {% endblock %}
+    {% endblock %}
 
-    <script src="http://{{ view.domain }}:35729/livereload.js?snipver=1"></script>
 
-</body>
+    </body>
 </html>

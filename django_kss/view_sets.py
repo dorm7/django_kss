@@ -1,22 +1,20 @@
 from django.conf.urls import url
-from django_kss.views import AutoStyleGuideView
+from django_kss.views import StyleGuideView
+from pathlib import Path
 
 
-class BaseStyleGuideViewSet(object):
+class StyleGuideViewSet(object):
 
-    style_name = None  # Auto Detect suffix, Default to all.scss
-    exclude_pattern = None  # Default exclude vendor
-    include_path = []  # Default to Project Static Path
+    style_names = map(lambda name: 'django_kss/css/' + name, ['device-list.css', 'icons.css', 'layout.css'])  # Auto Detect suffix, Default to all.scss
+    exclude_pattern = None
+    include_path = [str(Path.cwd().parent/'django_kss'/'static'/'django_kss'/'css')]  # Default to Project Static Path
 
     @classmethod
     def urls(cls):
-        """
-        :return: urlpatterns
-        """
 
-        view = AutoStyleGuideView.as_view(style_name=cls.style_name,
-                                          exclude_pattern=cls.exclude_pattern,
-                                          include_path=cls.include_path)
+        view = StyleGuideView.as_view(style_names=cls.style_names,
+                                      exclude_pattern=cls.exclude_pattern,
+                                      include_path=cls.include_path)
         return [
             url(r'^$', view, name='styleguide'),
             url(r'^/(?P<filename>.*)/$', view, name='styleguide'),

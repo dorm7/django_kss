@@ -1,0 +1,7 @@
+{% load styleguide %}
+
+{% block section %}
+    {% for section in current_sections %}
+        {% renderstyleguide styleguide section.section %}
+    {% endfor %}
+{% endblock %}

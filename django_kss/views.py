@@ -6,10 +6,12 @@ from pykss.style_guide_manager import StyleGuideManager
 logger = logging.getLogger(__name__)
 
 
-class AutoStyleGuideView(TemplateView):
-    style_name = None  # Auto Detect suffix, Default to all.scss
-    exclude_pattern = None  # Default exclude vendor
-    include_path = []  # Default to Project Static Path
+class StyleGuideView(TemplateView):
+
+    style_names = []
+    exclude_pattern = None
+    include_path = []
+
     template_name = 'django_kss/styleguide.html'
 
     def domain(self):
@@ -32,10 +34,11 @@ class AutoStyleGuideView(TemplateView):
 
         styleguide_manager = StyleGuideManager(self.include_path, self.exclude_pattern)
 
-        context = super(AutoStyleGuideView, self).get_context_data(**kwargs)
+        context = super(StyleGuideView, self).get_context_data(**kwargs)
 
         filenames = styleguide_manager.filenames()
-        context.update({'css_source_files': styleguide_manager.filenames()})
+
+        context.update({'css_source_files': filenames})
         context.update({'current_file': self._get_filename(filenames)})
         context.update({'current_sections': styleguide_manager.get_sections(self._get_filename(
             filenames

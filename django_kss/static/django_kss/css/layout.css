@@ -90,12 +90,11 @@
     position: relative;
     padding: 20px; }
 .styleguide-example .styleguide-element + .styleguide-element {
-    margin-top: -5px;
-    padding-top: 15px;
+    margin-top: -15px;
+    padding-top: 1px;
     border-top: 1px solid #eee; }
 .styleguide-example .styleguide-element .styleguide-modifier-name {
     display: block;
-    background-color: rgba(0,0,0,0.5);
     /* position: absolute; */
     /* top: 0; */
     /* right: 0; */
@@ -127,7 +126,12 @@
     font-family: Monaco, monospace;
 }
 
+.styleguide-modifier {
+   padding-left: 5px;
+}
 .styleguide-modifier li{
+    list-style: none;
+    list-style-position: inside;
 }
 
 .styleguide-nav{
@@ -272,17 +276,9 @@
         margin-left: 10px;
     }
 
-    /* Options 2 - Float
-    .nav li {
-      float: left;
-    }
-    .nav ul {
-      overflow: auto;
-      width: 600px;
-      margin: 0 auto;
-    }
-    .nav {
-      background-color: #444;
-    }
-    */
+}
+
+.Style-content{
+    width: 80%;
+    height: 100%;
 }

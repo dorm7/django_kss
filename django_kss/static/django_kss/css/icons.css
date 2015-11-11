@@ -1,0 +1,23 @@
+/*
+Form input sample.
+
+.DeviceIcon--iphone - Icon to show iphone
+
+Example:
+    <img class='DeviceIcon $modifier_class'/>
+
+Styleguide 2.1
+
+*/
+
+
+.DeviceIcon{
+    width: 86px;
+    height: 90px;
+    background-color: white;
+}
+
+.DeviceIcon--iphone{
+    background-image: url(../img/iphone.png);
+}
+

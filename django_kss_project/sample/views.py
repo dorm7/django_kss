@@ -1,8 +1,8 @@
 # Create your views here.
-from django_kss.view_sets import BaseStyleGuideViewSet
+from django_kss.view_sets import StyleGuideViewSet
 
 
-class StyleViewSet(BaseStyleGuideViewSet):
-    include_path = ['/Users/tim/Projects/django_kss/django_kss_project/sample/static/css/']
+class StyleViewSet(StyleGuideViewSet):
+    include_path = ['/Users/tim/Projects/django_kss/django_kss/sample/static/css/']
     exclude_pattern = 'vendor'
-    style_name = 'css/form.css'
+    style_names = ['css/form.css']

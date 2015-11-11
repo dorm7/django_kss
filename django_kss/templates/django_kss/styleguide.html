@@ -19,7 +19,7 @@
 <div id="wrapper">
 
     <!-- Nav tabs -->
-    <ul role="main" class='styleguide-nav styleguide-hidden-xs' role="tablist" data-js-bs-tab>
+    <ul role="main" class='styleguide-nav' role="tablist" data-js-bs-tab>
         {% for filename in css_source_files %}
             <li class="styleguide-nav-list {% if filename == current_file %} active {% endif %}">
                 <a class='styleguid-nav-anchor' href="{% url 'styleguide' filename=filename %}" role="tab">
@@ -30,17 +30,39 @@
     </ul>
 
 
-    {% block section %}
-        {% for section in current_sections %}
-            {% renderstyleguide styleguide section.section %}
-        {% endfor %}
-    {% endblock %}
+
+    <div>
+
+        <div class='Stack' data-js-size-adjuster data-js-size-width data-js-size-height >
+            <img class='DeviceIcon DeviceIcon--iphone'></img>
+            <span class='Stack-text'>iphone 5</span>
+        </div>
+
+    </div>
+    <iframe src="" class='Style-content' frameborder="0" data-js-iframe-target> </iframe>
+
 
 
 </div>
 
+    <script type="text/html" data-js-iframe-source>
+        {%  styleguide_link_style_tag view.style_names %}
+        <style>
+            {% styleguide_highlight_style %}
+        </style>
 
+        {% include 'django_kss/render_sections.html' %}
+    </script>
 
-
+    <script src="{% static 'django_kss/js/jquery.js' %}"></script>
+    <script src="{% static 'django_kss/js/replace_iframe.js' %}"></script>
+    <script>
+        $(function(){
+            replaceIframe({
+                source: '[data-js-iframe-source]',
+                target: '[data-js-iframe-target]'
+            });
+        });
+    </script>
 
 {% endblock %}

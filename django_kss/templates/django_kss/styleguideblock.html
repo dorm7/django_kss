@@ -22,9 +22,16 @@
 
 
     {% block styleguide_element %}
-        <div class="styleguide-element">
-            {{ section.example|safe }}
-        </div>
+        {% if section.example %}
+            <div class="styleguide-element">
+                {{ section.example|safe }}
+            </div>
+            <div class="styleguide-element">
+
+                {{ section.example|styleguide_highlight_code:'html' | safe}}
+
+            </div>
+        {%endif%}
     {% endblock %}
 
 
@@ -34,16 +41,10 @@
             <span class="styleguide-modifier-name">{{ modifier.name }}</span>
             {{ modifier.example|safe }}
         </div>
+        <div class="styleguide-element">
+            {{ modifier.example|styleguide_highlight_code:'html' | safe}}
+        </div>
         {% endfor %}
-    {% endblock %}
-
-
-    {% block styleguide_code %}
-        {%if section.example %}
-            <div class="styleguide-element styleguide-hidden-xs">
-            {{ section.example|styleguide_highlight_code:'html' | safe}}
-            </div>
-        {%endif%}
     {% endblock %}
 
 

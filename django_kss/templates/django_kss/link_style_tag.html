@@ -2,9 +2,11 @@
 {% load static %}
 
 {% compress css %}
-    {% if type == 'scss' %}
-        <link rel="stylesheet" href="{% static  filename %}" type="text/x-scss" />
-    {% elif type == 'css' %}
-        <link rel="stylesheet" href="{% static  filename %}" />
-    {% endif %}
+    {% for link in styles %}
+        {% if link.type == 'scss' %}
+            <link rel="stylesheet" href="{% static  link.filename %}" type="text/x-scss" />
+        {% elif link.type == 'css' %}
+            <link rel="stylesheet" href="{% static  link.filename %}" />
+        {% endif %}
+    {% endfor %}
 {% endcompress %}

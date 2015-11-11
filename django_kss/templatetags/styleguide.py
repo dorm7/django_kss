@@ -9,11 +9,18 @@ register = template.Library()
 
 
 @register.inclusion_tag('django_kss/link_style_tag.html')
-def styleguide_link_style_tag(style_filename):
-    if style_filename.lower().endswith('scss'):
-        return {'type': 'scss', 'filename': style_filename}
-    else:
-        return {'type': 'css', 'filename': style_filename}
+def styleguide_link_style_tag(style_filenames):
+
+    styles = []
+    for filename in style_filenames:
+        if filename.lower().endswith('scss'):
+            styles.append({'type': 'scss', 'filename': filename})
+        else:
+            styles.append({'type': 'css', 'filename': filename})
+
+    return {
+        'styles': styles
+    }
 
 
 @register.filter(name='styleguide_highlight_code')
@@ -23,7 +30,7 @@ def styleguide_highlight_code(code, lang):
             lexer = get_lexer_by_name(lang, encoding='utf-8', stripall=True, startinline=True)
         except ClassNotFound:
             lexer = get_lexer_by_name('text')
-        formatter = HtmlFormatter(encoding='utf-8', style='colorful', cssclass='highlight',
+        formatter = HtmlFormatter(encoding='utf-8', style='colorful', cssclass='highlight',linenos='table',
                                   lineanchors="line")
         return highlight(code, lexer, formatter)
     else:
