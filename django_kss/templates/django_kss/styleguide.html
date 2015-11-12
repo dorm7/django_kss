@@ -33,7 +33,11 @@
 
     <div>
 
-        <div class='Stack' data-js-size-adjuster data-js-size-width data-js-size-height >
+        <div class='Stack'
+             data-js-size-adjuster
+             data-width="300"
+             data-height="500"
+             data-target="[data-js-iframe-target]">
             <img class='DeviceIcon DeviceIcon--iphone'></img>
             <span class='Stack-text'>iphone 5</span>
         </div>
@@ -63,6 +67,18 @@
                 target: '[data-js-iframe-target]'
             });
         });
+    </script>
+
+    <script>
+        $(function(){
+            $(document).on('click', '[data-js-size-adjuster]', function(){
+                var $trigger = $(this);
+                var width = $trigger.data('width');
+                var height = $trigger.data('height');
+                var target = $trigger.data('target');
+                $(target).width(width).height(height);
+            })
+        })
     </script>
 
 {% endblock %}
