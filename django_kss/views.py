@@ -1,6 +1,6 @@
 import logging
 from django.views.generic.base import TemplateView
-from pykss.style_guide_manager import StyleGuideManager
+from .pykss.style_guide_manager import StyleGuideManager
 
 
 logger = logging.getLogger(__name__)
