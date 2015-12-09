@@ -1,6 +1,5 @@
-Django==1.8.6
-Pygments==2.0.1
-wsgiref==0.1.2
+Django
+Pygments
 django_compressor
 django-libsass
 nose==1.3.7
