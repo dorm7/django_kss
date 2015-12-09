@@ -28,7 +28,6 @@ class StyleGuideView(TemplateView):
 
     def get_context_data(self, **kwargs):
 
-        print self.include_path
         logger.debug('include path', self.include_path)
         logger.debug('exclude pattern', self.exclude_pattern)
 
