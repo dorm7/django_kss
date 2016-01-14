@@ -1,4 +1,4 @@
-import parser
+from . import parser
 
 
 class StyleGuideManager(object):
