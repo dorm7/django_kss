@@ -5,7 +5,9 @@ from pathlib import Path
 
 class StyleGuideViewSet(object):
 
-    style_names = map(lambda name: 'django_kss/css/' + name, ['device-list.css', 'icons.css', 'layout.css'])  # Auto Detect suffix, Default to all.scss
+    style_names = map(lambda name: 'django_kss/css/' + name,
+                      ['device-list.css', 'icons.css', 'layout.css'])  # Auto Detect suffix, Default to all.scss
+
     exclude_pattern = None
     include_path = [str(Path.cwd().parent/'django_kss'/'static'/'django_kss'/'css')]  # Default to Project Static Path
 

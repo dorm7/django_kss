@@ -11,6 +11,8 @@ class StyleGuideView(TemplateView):
     style_names = []
     exclude_pattern = None
     include_path = []
+    ## add a css_fragment template file name
+
 
     template_name = 'django_kss/styleguide.html'
 

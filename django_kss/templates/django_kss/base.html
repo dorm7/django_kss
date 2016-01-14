@@ -11,6 +11,11 @@
     <title>Styleguide Example</title>
 
     {%  styleguide_link_style_tag view.style_names %}
+    {% comment %}
+        the abouve change to just a include tag.
+
+        {% include  {{ css_fragment }} %}
+    {% endcomment %}
 
     <link rel="stylesheet" href="{% static 'django_kss/css/layout.css' %}" type="text/css" />
 
